@@ -12,6 +12,9 @@ class gps(object):
         self.year=False
         self.month=False
         self.day=False
+        self.hh=False
+        self.mm=False
+        self.ss=False
     def gll(self):
         i=self.uart.readline()
         try:
