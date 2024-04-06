@@ -40,20 +40,21 @@ class gps(object):
             if i.startswith(b"$GNRMC"):
                 line = str(i).split(',')
                 if len(line)==14:
-                    return self.info(line)
+#                     print(">>>",line)
+                    return self.all_info(line)
                 elif len(line)>=7:
                     return self.info_gps(line)
             return False
         except:
             return False
-    def info(self,line):
+    def all_info(self,line):
         self.hh=line[1][0:2]
         self.mm=line[1][2:4]
         self.ss=line[1][4:6]
         self.Lat = float(line[3][:2])+float(line[3][2:])/60
-        self.Tn=line[2]
+        self.Tn=line[4]
         self.Lng = float(line[5][:3])+float(line[5][3:])/60
-        self.Gn=line[4]
+        self.Gn=line[6]
         self.gps=[self.Lat,self.Tn,self.Lng,self.Gn,(self.hh,self.mm,self.ss)]
         self.speed=float(line[7])*1.852
         self.date=[line[9][4:6],line[9][2:4],line[9][0:2]]
@@ -67,9 +68,8 @@ class gps(object):
         self.mm=line[1][2:4]
         self.ss=line[1][4:6]
         self.Lat = float(line[3][:2])+float(line[3][2:])/60
-        self.Tn=line[2]
+        self.Tn=line[4]
         self.Lng = float(line[5][:3])+float(line[5][3:])/60
-        self.Gn=line[4]
+        self.Gn=line[6]
         self.gps=[self.Lat,self.Tn,self.Lng,self.Gn,[self.hh,self.mm,self.ss]]
         return self.gps
-
