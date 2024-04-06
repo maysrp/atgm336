@@ -1,7 +1,17 @@
 class gps(object):
     def __init__(self,uart):
         self.uart=uart
-        self.gps=[]
+        self.gps=False
+        self.speed=False
+        self.jd=False
+        self.Lat = False
+        self.Tn=False
+        self.Lng = False
+        self.Gn=False
+        self.date=False
+        self.year=False
+        self.month=False
+        self.day=False
     def gll(self):
         i=self.uart.readline()
         try:
