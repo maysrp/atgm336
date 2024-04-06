@@ -26,7 +26,6 @@ class gps(object):
         try:
             if i.startswith(b"$GNRMC"):
                 line = str(i).split(',')
-                print(line)
                 if len(line)==14:
                     return self.info(line)
                 elif len(line)>=7:
